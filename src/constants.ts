@@ -7,7 +7,7 @@ export const MENU_ITEMS: Dish[] = [
     price: '1500৳',
     description: 'A delicious, photorealistic 3D view of our authentic Margherita pizza, featuring fresh melted mozzarella, rich tomato sauce, and fresh basil leaves on a white plate.',
     image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1000&auto=format&fit=crop',
-    modelUrl: '/pizza.glb', // Reference local public folder model
+    modelUrl: './pizza.glb', // Reference local public folder model
     category: 'Main Course',
   },
   {
