@@ -12,6 +12,7 @@ interface MenuProps {
 export function Menu({ isNight }: MenuProps) {
   const [selectedCategory, setSelectedCategory] = useState<Dish['category'] | 'All'>('All');
   const [activeDish, setActiveDish] = useState<Dish | null>(null);
+  const [showPizza3D, setShowPizza3D] = useState(false);
 
   const categories: (Dish['category'] | 'All')[] = ['All', 'Appetizer', 'Main Course', 'Dessert'];
 
@@ -73,25 +74,72 @@ export function Menu({ isNight }: MenuProps) {
               className="group relative"
             >
               <div className="aspect-[4/3] overflow-hidden relative rounded-[2.5rem] mb-10">
-                <img 
-                  src={dish.image} 
-                  alt={dish.name}
-                  className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
-                  referrerPolicy="no-referrer"
-                />
-                
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                   <button 
-                    onClick={() => setActiveDish(dish)}
-                    className="flex flex-col items-center gap-4 glass p-8 rounded-full transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 ar-glow"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center">
-                      <Eye size={24} />
+                {dish.id === '1' ? (
+                  showPizza3D ? (
+                    <div className="w-full h-full flex items-center justify-center bg-black">
+                      <iframe 
+                        src="https://poly.cam/capture/af95951d-5721-425d-a7da-477e222019c4/embed" 
+                        title="Polycam capture viewer" 
+                        style={{ height: '100%', width: '100%', maxHeight: '720px', maxWidth: '1280px', minHeight: '280px', minWidth: '280px' }} 
+                        frameBorder="0"
+                      />
                     </div>
-                    <span className="text-[10px] uppercase tracking-widest font-bold text-white">INTERACT</span>
+                  ) : (
+                    <img 
+                      src={dish.image} 
+                      alt={dish.name}
+                      className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
+                      referrerPolicy="no-referrer"
+                    />
+                  )
+                ) : (
+                  <>
+                    <img 
+                      src={dish.image} 
+                      alt={dish.name}
+                      className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
+                      referrerPolicy="no-referrer"
+                    />
+                    
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                       <button 
+                        onClick={() => setActiveDish(dish)}
+                        className="flex flex-col items-center gap-4 glass p-8 rounded-full transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 ar-glow"
+                      >
+                        <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center">
+                          <Eye size={24} />
+                        </div>
+                        <span className="text-[10px] uppercase tracking-widest font-bold text-white">INTERACT</span>
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {dish.id === '1' && (
+                <div className="flex gap-2 p-1.5 bg-neutral-100 dark:bg-neutral-900/60 backdrop-blur-md rounded-2xl mb-8 max-w-[280px] border border-neutral-200/40 dark:border-neutral-800/40 shadow-sm">
+                  <button
+                    onClick={() => setShowPizza3D(false)}
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[10px] uppercase tracking-widest font-bold transition-all duration-300 ${
+                      !showPizza3D
+                        ? 'bg-[#ff4500] text-white shadow-md shadow-[#ff4500]/20'
+                        : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
+                    }`}
+                  >
+                    📷 Photo View
+                  </button>
+                  <button
+                    onClick={() => setShowPizza3D(true)}
+                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[10px] uppercase tracking-widest font-bold transition-all duration-300 ${
+                      showPizza3D
+                        ? 'bg-[#ff4500] text-white shadow-md shadow-[#ff4500]/20'
+                        : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
+                    }`}
+                  >
+                    🔄 Interactive 3D
                   </button>
                 </div>
-              </div>
+              )}
 
               <div>
                 <div className="flex justify-between items-start mb-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
