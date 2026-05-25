@@ -12,7 +12,6 @@ interface MenuProps {
 export function Menu({ isNight }: MenuProps) {
   const [selectedCategory, setSelectedCategory] = useState<Dish['category'] | 'All'>('All');
   const [activeDish, setActiveDish] = useState<Dish | null>(null);
-  const [showPizza3D, setShowPizza3D] = useState(false);
 
   const categories: (Dish['category'] | 'All')[] = ['All', 'Appetizer', 'Main Course', 'Dessert'];
 
@@ -75,23 +74,12 @@ export function Menu({ isNight }: MenuProps) {
             >
               <div className="aspect-[4/3] overflow-hidden relative rounded-[2.5rem] mb-10">
                 {dish.id === '1' ? (
-                  showPizza3D ? (
-                    <div className="w-full h-full flex items-center justify-center bg-black">
-                      <iframe 
-                        src="https://poly.cam/capture/af95951d-5721-425d-a7da-477e222019c4/embed" 
-                        title="Polycam capture viewer" 
-                        style={{ height: '100%', width: '100%', maxHeight: '720px', maxWidth: '1280px', minHeight: '280px', minWidth: '280px' }} 
-                        frameBorder="0"
-                      />
-                    </div>
-                  ) : (
-                    <img 
-                      src={dish.image} 
-                      alt={dish.name}
-                      className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
-                      referrerPolicy="no-referrer"
-                    />
-                  )
+                  <img 
+                    src={dish.image} 
+                    alt={dish.name}
+                    className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
+                    referrerPolicy="no-referrer"
+                  />
                 ) : (
                   <>
                     <img 
@@ -117,26 +105,21 @@ export function Menu({ isNight }: MenuProps) {
               </div>
 
               {dish.id === '1' && (
-                <div className="flex gap-2 p-1.5 bg-neutral-100 dark:bg-neutral-900/60 backdrop-blur-md rounded-2xl mb-8 max-w-[280px] border border-neutral-200/40 dark:border-neutral-800/40 shadow-sm">
+                <div className="mb-8 max-w-[280px]">
                   <button
-                    onClick={() => setShowPizza3D(false)}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[10px] uppercase tracking-widest font-bold transition-all duration-300 ${
-                      !showPizza3D
-                        ? 'bg-[#ff4500] text-white shadow-md shadow-[#ff4500]/20'
-                        : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
-                    }`}
+                    onClick={() => {
+                      const arPopup = document.getElementById('ar-popup');
+                      if (arPopup) {
+                        arPopup.style.display = 'block';
+                        const iframe = arPopup.querySelector('iframe');
+                        if (iframe) {
+                          iframe.src = '/ar.html';
+                        }
+                      }
+                    }}
+                    className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-2xl text-[10px] uppercase tracking-[0.2em] font-bold bg-[#ff4500] hover:bg-[#ff5714] text-white shadow-lg shadow-[#ff4500]/25 hover:shadow-[#ff4500]/35 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
                   >
-                    📷 Photo View
-                  </button>
-                  <button
-                    onClick={() => setShowPizza3D(true)}
-                    className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-[10px] uppercase tracking-widest font-bold transition-all duration-300 ${
-                      showPizza3D
-                        ? 'bg-[#ff4500] text-white shadow-md shadow-[#ff4500]/20'
-                        : 'text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200'
-                    }`}
-                  >
-                    🔄 Interactive 3D
+                    🍕 View in AR
                   </button>
                 </div>
               )}
