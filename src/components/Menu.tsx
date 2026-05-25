@@ -108,12 +108,24 @@ export function Menu({ isNight }: MenuProps) {
                 <div className="mb-8 max-w-[280px]">
                   <button
                     onClick={() => {
+                      const mainMenu = document.getElementById('main-menu');
+                      if (mainMenu) {
+                        mainMenu.style.display = 'none';
+                      }
                       const arPopup = document.getElementById('ar-popup');
                       if (arPopup) {
                         arPopup.style.display = 'block';
+                        try {
+                          (document.querySelector('a-scene') as any)?.resize();
+                        } catch (e) {}
                         const iframe = arPopup.querySelector('iframe');
                         if (iframe) {
                           iframe.src = '/ar.html';
+                          iframe.onload = () => {
+                            try {
+                              (iframe.contentWindow?.document.querySelector('a-scene') as any)?.resize();
+                            } catch (e) {}
+                          };
                         }
                       }
                     }}

@@ -12,9 +12,11 @@
       body {
         margin: 0;
         overflow: hidden;
-        background-color: #000;
+        background-color: transparent !important;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       }
+      canvas.a-canvas { z-index: 1 !important; }
+      .a-video-stage { z-index: 0 !important; }
       #ar-instructions {
         position: fixed;
         bottom: 30px;
