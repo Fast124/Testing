@@ -24,6 +24,11 @@
   }
 }
 
+#ar-popup {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
 .font-display {
   font-family: var(--font-display);
 }

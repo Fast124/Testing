@@ -106,33 +106,12 @@ export function Menu({ isNight }: MenuProps) {
 
               {dish.id === '1' && (
                 <div className="mb-8 max-w-[280px]">
-                  <button
-                    onClick={() => {
-                      const mainMenu = document.getElementById('main-menu');
-                      if (mainMenu) {
-                        mainMenu.style.display = 'none';
-                      }
-                      const arPopup = document.getElementById('ar-popup');
-                      if (arPopup) {
-                        arPopup.style.display = 'block';
-                        try {
-                          (document.querySelector('a-scene') as any)?.resize();
-                        } catch (e) {}
-                        const iframe = arPopup.querySelector('iframe');
-                        if (iframe) {
-                          iframe.src = '/ar.html';
-                          iframe.onload = () => {
-                            try {
-                              (iframe.contentWindow?.document.querySelector('a-scene') as any)?.resize();
-                            } catch (e) {}
-                          };
-                        }
-                      }
-                    }}
-                    className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-2xl text-[10px] uppercase tracking-[0.2em] font-bold bg-[#ff4500] hover:bg-[#ff5714] text-white shadow-lg shadow-[#ff4500]/25 hover:shadow-[#ff4500]/35 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                  <a
+                    href="/ar-view.html"
+                    className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-2xl text-[10px] uppercase tracking-[0.2em] font-bold bg-[#ff4500] hover:bg-[#ff5714] text-white shadow-lg shadow-[#ff4500]/25 hover:shadow-[#ff4500]/35 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 text-center"
                   >
                     🍕 View in AR
-                  </button>
+                  </a>
                 </div>
               )}
 
