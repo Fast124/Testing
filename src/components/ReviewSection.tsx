@@ -36,7 +36,7 @@ export function ReviewSection() {
              <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral-500 mb-4 block">
               GUEST VOICES
             </span>
-            <h2 className="text-5xl md:text-7xl font-display uppercase tracking-widest leading-[0.9] mb-12">
+            <h2 className="text-5xl md:text-7xl font-display uppercase tracking-widest leading-[0.9] mb-12 text-neutral-900 dark:text-white">
               WORD OF<br />MOUTH
             </h2>
             <p className="text-neutral-500 dark:text-neutral-400 mb-12 leading-relaxed uppercase text-xs tracking-widest font-light">
@@ -44,7 +44,7 @@ export function ReviewSection() {
             </p>
 
             <form onSubmit={handleSubmit} className="p-8 bg-white dark:bg-neutral-900 rounded-[2rem] border border-neutral-200 dark:border-neutral-800 shadow-xl">
-              <h3 className="text-lg font-bold mb-6">Write a Review</h3>
+              <h3 className="text-lg font-bold mb-6 text-neutral-900 dark:text-white">Write a Review</h3>
               
               <div className="space-y-4">
                 <div>
@@ -53,7 +53,7 @@ export function ReviewSection() {
                     type="text"
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
-                    className="w-full bg-neutral-100 dark:bg-black p-3 rounded-xl focus:ring-2 ring-neutral-200 dark:ring-neutral-700 outline-none transition-all"
+                    className="w-full bg-neutral-100 dark:bg-black p-3 rounded-xl focus:ring-2 ring-neutral-200 dark:ring-neutral-700 outline-none transition-all text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-600"
                     placeholder="Your name"
                   />
                 </div>
@@ -80,7 +80,7 @@ export function ReviewSection() {
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
                     rows={4}
-                    className="w-full bg-neutral-100 dark:bg-black p-3 rounded-xl focus:ring-2 ring-neutral-200 dark:ring-neutral-700 outline-none transition-all resize-none"
+                    className="w-full bg-neutral-100 dark:bg-black p-3 rounded-xl focus:ring-2 ring-neutral-200 dark:ring-neutral-700 outline-none transition-all resize-none text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-600"
                     placeholder="Tell us about your visit..."
                   />
                 </div>
@@ -112,7 +112,7 @@ export function ReviewSection() {
                         <User size={24} />
                       </div>
                       <div>
-                        <h4 className="font-bold">{review.user}</h4>
+                        <h4 className="font-bold text-neutral-900 dark:text-white">{review.user}</h4>
                         <span className="text-[10px] text-neutral-400 font-mono uppercase">{review.date}</span>
                       </div>
                     </div>

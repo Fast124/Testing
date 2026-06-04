@@ -11,19 +11,19 @@ export function ContactMap() {
           <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral-500 mb-4 block">
             FIND OUR KITCHEN
           </span>
-          <h2 className="text-6xl md:text-[100px] font-display uppercase tracking-tighter leading-[0.8] mb-16">
+          <h2 className="text-6xl md:text-[100px] font-display uppercase tracking-tighter leading-[0.8] mb-16 text-neutral-900 dark:text-white">
             STAY IN<br />TOUCH
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-neutral-500 mb-4">Location</h4>
-              <p className="text-lg font-medium leading-tight">Eastern Hossain,<br />Pallabi 2nd phrase</p>
+              <p className="text-lg font-medium leading-tight text-neutral-900 dark:text-neutral-100">Eastern Hossain,<br />Pallabi 2nd phrase</p>
             </div>
 
             <div>
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-neutral-500 mb-4">Reservations</h4>
-              <p className="text-lg font-medium">+88 01534611199</p>
+              <p className="text-lg font-medium text-neutral-900 dark:text-neutral-100">+88 01534611199</p>
               <p className="text-[10px] text-neutral-400 mt-2 italic">Open: 5PM — 12AM</p>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MENU_ITEMS } from '../constants';
 import { Dish } from '../types';
-import { Box, Share2, Star, Eye } from 'lucide-react';
+import { Box, Share2, Star, Eye, X, Camera } from 'lucide-react';
 import { Dish3DModal } from './Dish3DModal';
 
 interface MenuProps {
@@ -12,6 +12,7 @@ interface MenuProps {
 export function Menu({ isNight }: MenuProps) {
   const [selectedCategory, setSelectedCategory] = useState<Dish['category'] | 'All'>('All');
   const [activeDish, setActiveDish] = useState<Dish | null>(null);
+  const [showSketchfabModal, setShowSketchfabModal] = useState(false);
 
   const categories: (Dish['category'] | 'All')[] = ['All', 'Appetizer', 'Main Course', 'Dessert'];
 
@@ -38,7 +39,7 @@ export function Menu({ isNight }: MenuProps) {
           <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-neutral-500 mb-4 block">
             THE ARCHIVE
           </span>
-          <h2 className="text-6xl md:text-8xl font-display uppercase tracking-widest leading-[0.9]">
+          <h2 className="text-6xl md:text-8xl font-display uppercase tracking-widest leading-[0.9] text-neutral-900 dark:text-white">
             SELECT<br />EDIT
           </h2>
         </div>
@@ -73,52 +74,47 @@ export function Menu({ isNight }: MenuProps) {
               className="group relative"
             >
               <div className="aspect-[4/3] overflow-hidden relative rounded-[2.5rem] mb-10">
-                {dish.id === '1' ? (
-                  <img 
-                    src={dish.image} 
-                    alt={dish.name}
-                    className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
-                    referrerPolicy="no-referrer"
-                  />
-                ) : (
-                  <>
-                    <img 
-                      src={dish.image} 
-                      alt={dish.name}
-                      className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
-                      referrerPolicy="no-referrer"
-                    />
-                    
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                       <button 
-                        onClick={() => setActiveDish(dish)}
-                        className="flex flex-col items-center gap-4 glass p-8 rounded-full transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 ar-glow"
-                      >
-                        <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center">
-                          <Eye size={24} />
-                        </div>
-                        <span className="text-[10px] uppercase tracking-widest font-bold text-white">INTERACT</span>
-                      </button>
+                <img 
+                  src={dish.image} 
+                  alt={dish.name}
+                  className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ease-out"
+                  referrerPolicy="no-referrer"
+                />
+                
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                   <button 
+                    onClick={() => {
+                      if (dish.id === '1') {
+                        setShowSketchfabModal(true);
+                      } else {
+                        setActiveDish(dish);
+                      }
+                    }}
+                    className="flex flex-col items-center gap-4 glass p-8 rounded-full transform translate-y-10 group-hover:translate-y-0 transition-all duration-700 ar-glow"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center">
+                       <Eye size={24} />
                     </div>
-                  </>
-                )}
+                    <span className="text-[10px] uppercase tracking-widest font-bold text-white">INTERACT</span>
+                  </button>
+                </div>
               </div>
 
               {dish.id === '1' && (
-                <div className="mb-8 max-w-[280px]">
-                  <a
-                    href="/ar-view.html"
-                    className="w-full flex items-center justify-center gap-3 py-3.5 px-6 rounded-2xl text-[10px] uppercase tracking-[0.2em] font-bold bg-[#ff4500] hover:bg-[#ff5714] text-white shadow-lg shadow-[#ff4500]/25 hover:shadow-[#ff4500]/35 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 text-center"
-                  >
-                    🍕 View in AR
-                  </a>
-                </div>
+                <button
+                  onClick={() => setShowSketchfabModal(true)}
+                  className="flex items-center justify-center gap-3 px-8 py-3.5 mb-8 w-full max-w-[280px] bg-gradient-to-r from-[#ff4500] to-[#ff6a00] text-white rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-[#ff4500]/20 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#ff4500]/30 transition-all duration-300 cursor-pointer"
+                  id="view-live-pizza-btn"
+                >
+                  <Box size={14} className="animate-pulse" />
+                  View Live
+                </button>
               )}
 
               <div>
                 <div className="flex justify-between items-start mb-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
                   <div>
-                    <h3 className="text-4xl font-display uppercase tracking-wider mb-2 group-hover:tracking-widest transition-all duration-500">{dish.name}</h3>
+                    <h3 className="text-4xl font-display uppercase tracking-wider mb-2 group-hover:tracking-widest transition-all duration-500 text-neutral-900 dark:text-white">{dish.name}</h3>
                     <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-neutral-500">{dish.category}</p>
                   </div>
                   <div className="text-right">
@@ -148,6 +144,65 @@ export function Menu({ isNight }: MenuProps) {
             dish={activeDish} 
             onClose={() => setActiveDish(null)} 
           />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showSketchfabModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
+            id="sketchfab-modal-overlay"
+          >
+            {/* Header / Close controls floating at top */}
+            <div className="absolute top-6 right-6 z-[110] flex items-center gap-4">
+              <span className="text-[10px] text-white/50 tracking-widest font-mono uppercase hidden sm:inline-block">
+                Interactive 3D Pizza Showcase
+              </span>
+              <button
+                onClick={() => setShowSketchfabModal(false)}
+                className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors cursor-pointer border border-white/15 shadow-lg"
+                aria-label="Close interactive view"
+                id="sketchfab-close-btn"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Main Modal Box Container filling viewport */}
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="w-full h-full p-4 sm:p-8 flex flex-col items-center justify-center relative"
+              id="sketchfab-modal-box"
+            >
+              <div className="w-full h-full max-w-6xl max-h-[80vh] rounded-[2rem] overflow-hidden border border-neutral-800 shadow-2xl bg-neutral-950 relative">
+                <div className="sketchfab-embed-wrapper" style={{ width: '100%', height: '100%' }}> 
+                  <iframe 
+                    title="Pizza" 
+                    style={{ width: '100%', height: '100%', border: 'none' }} 
+                    frameBorder="0" 
+                    allowFullScreen
+                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                    xr-spatial-tracking="true"
+                    execution-while-out-of-viewport="true"
+                    execution-while-not-rendered="true" 
+                    web-share="true" 
+                    src="https://sketchfab.com/models/327feaa0c5fc4796955c5e46ed81da17/embed?ui_theme=dark&ui_watermark=0&ui_infos=0&ui_stop=0"
+                  />
+                </div>
+              </div>
+              
+              <div className="mt-6 text-center">
+                <h3 className="text-xl md:text-2xl font-display text-white uppercase tracking-wider">Classic Margherita Pizza</h3>
+                <p className="text-xs text-neutral-400 mt-1 max-w-md mx-auto">Rotate, zoom, and inspect every detail of our wood-fired gourmet recipe in real-time 3D.</p>
+              </div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </section>

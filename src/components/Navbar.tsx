@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
-import { Moon, Sun, Menu as MenuIcon, X } from 'lucide-react';
+import { Menu as MenuIcon, X } from 'lucide-react';
 import { useState } from 'react';
+import { ThemeSwitch } from './ThemeSwitch';
 
 interface NavbarProps {
   isNight: boolean;
@@ -24,7 +25,7 @@ export function Navbar({ isNight, onToggleNight }: NavbarProps) {
         <div className="flex items-center gap-12">
           <button 
             onClick={() => scrollToSection('hero')}
-            className="text-2xl font-display tracking-widest hover:opacity-70 transition-opacity"
+            className="text-2xl font-display tracking-widest hover:opacity-70 transition-opacity text-neutral-900 dark:text-white"
           >
             TESTING
           </button>
@@ -42,25 +43,13 @@ export function Navbar({ isNight, onToggleNight }: NavbarProps) {
           </div>
         </div>
 
-        <div className="flex items-center gap-8">
-          <div className="hidden sm:flex p-1 bg-neutral-100 dark:bg-neutral-900 rounded-full border border-neutral-200 dark:border-neutral-800">
-             <button
-              onClick={onToggleNight}
-              className={`px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest transition-all ${!isNight ? 'bg-white text-black shadow-sm' : 'text-neutral-500'}`}
-            >
-              DAWN
-            </button>
-            <button
-              onClick={onToggleNight}
-              className={`px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest transition-all ${isNight ? 'bg-white text-black shadow-sm' : 'text-neutral-400'}`}
-            >
-              DUSK
-            </button>
-          </div>
+        <div className="flex items-center gap-6 md:gap-8">
+          <ThemeSwitch isNight={isNight} onToggleNight={onToggleNight} />
           
           <button 
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
           >
             {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
           </button>
@@ -78,7 +67,7 @@ export function Navbar({ isNight, onToggleNight }: NavbarProps) {
             <button
               key={item}
               onClick={() => scrollToSection(item)}
-              className="text-lg uppercase tracking-widest font-bold text-left"
+              className="text-lg uppercase tracking-widest font-bold text-left text-neutral-900 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
             >
               {item}
             </button>
