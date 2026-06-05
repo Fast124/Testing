@@ -192,14 +192,42 @@ export function Menu({ isNight }: MenuProps) {
                     execution-while-out-of-viewport="true"
                     execution-while-not-rendered="true" 
                     web-share="true" 
-                    src="https://sketchfab.com/models/327feaa0c5fc4796955c5e46ed81da17/embed?ui_theme=dark&ui_watermark=0&ui_infos=0&ui_stop=0"
+                    src="https://sketchfab.com/models/327feaa0c5fc4796955c5e46ed81da17/embed?autostart=1&ui_infos=0&ui_stop=0&ui_inspector=0"
                   />
                 </div>
               </div>
               
               <div className="mt-6 text-center">
                 <h3 className="text-xl md:text-2xl font-display text-white uppercase tracking-wider">Classic Margherita Pizza</h3>
-                <p className="text-xs text-neutral-400 mt-1 max-w-md mx-auto">Rotate, zoom, and inspect every detail of our wood-fired gourmet recipe in real-time 3D.</p>
+                <p className="text-xs text-neutral-400 mt-1 max-w-md mx-auto font-light">Rotate, zoom, and inspect every detail of our wood-fired gourmet recipe in real-time 3D.</p>
+                <p className="text-[10px] text-neutral-500 mt-3 font-mono tracking-wider">
+                  <a 
+                    href="https://sketchfab.com/3d-models/pizza-327feaa0c5fc4796955c5e46ed81da17?utm_medium=embed&utm_campaign=share-popup&utm_content=327feaa0c5fc4796955c5e46ed81da17" 
+                    target="_blank" 
+                    rel="nofollow" 
+                    className="hover:text-amber-500 underline transition-colors"
+                  >
+                    Pizza
+                  </a>{' '}
+                  by{' '}
+                  <a 
+                    href="https://sketchfab.com/Zyvflo?utm_medium=embed&utm_campaign=share-popup&utm_content=327feaa0c5fc4796955c5e46ed81da17" 
+                    target="_blank" 
+                    rel="nofollow" 
+                    className="hover:text-amber-500 underline transition-colors"
+                  >
+                    Zyvflo
+                  </a>{' '}
+                  on{' '}
+                  <a 
+                    href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=327feaa0c5fc4796955c5e46ed81da17" 
+                    target="_blank" 
+                    rel="nofollow" 
+                    className="hover:text-amber-500 underline transition-colors"
+                  >
+                    Sketchfab
+                  </a>
+                </p>
               </div>
             </motion.div>
           </motion.div>
