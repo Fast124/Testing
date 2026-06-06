@@ -4,7 +4,7 @@ export const MENU_ITEMS: Dish[] = [
   {
     id: '1',
     name: 'Classic Margherita Pizza',
-    price: '1500৳',
+    price: '$15.00',
     description: 'A delicious, photorealistic 3D view of our authentic Margherita pizza, featuring fresh melted mozzarella, rich tomato sauce, and fresh basil leaves on a white plate.',
     image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1000&auto=format&fit=crop',
     modelUrl: 'https://raw.githubusercontent.com/Fast124/Testing/main/pizza.glb', // Direct GitHub model URL
@@ -13,7 +13,7 @@ export const MENU_ITEMS: Dish[] = [
   {
     id: '2',
     name: 'Wagyu Ribeye',
-    price: '8500৳',
+    price: '$85.00',
     description: 'A5 Miyazki Wagyu steak, scorched leeks, bone marrow butter, and red wine reduction.',
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop',
     modelUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb', // Placeholder model
@@ -22,7 +22,7 @@ export const MENU_ITEMS: Dish[] = [
   {
     id: '3',
     name: 'Deconstructed Tiramisu',
-    price: '2000৳',
+    price: '$20.00',
     description: 'Espresso-soaked sponge, mascarpone foam, cocoa soil, and gold leaf.',
     image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=1000&auto=format&fit=crop',
     modelUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb', // Placeholder model
@@ -31,7 +31,7 @@ export const MENU_ITEMS: Dish[] = [
   {
     id: '4',
     name: 'Scallop Crudité',
-    price: '2350৳',
+    price: '$23.50',
     description: 'Hokkaido scallops, yuzu kosho, pickled radish, and cilantro oil.',
     image: 'https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?q=80&w=1000&auto=format&fit=crop',
     modelUrl: 'https://modelviewer.dev/shared-assets/models/Astronaut.glb', // Placeholder model

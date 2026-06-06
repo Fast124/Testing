@@ -1,5 +1,5 @@
 {
-  "name": "The Test Kitchen",
+  "name": "Interactive 3D Menu Demo",
   "description": "A high-end experimental restaurant featuring interactive 3D/AR menu visualization, evening/day modes, and community reviews.",
   "requestFramePermissions": ["camera"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
