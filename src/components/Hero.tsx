@@ -34,19 +34,7 @@ export function Hero({ isNight }: HeroProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <button 
-              onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group flex items-center gap-6 glass px-10 py-6 rounded-full hover:bg-white hover:text-black transition-all duration-500 ar-glow"
-            >
-              <div className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-neutral-200 transition-colors">
-                <Box size={24} />
-              </div>
-              <div className="text-left">
-                <span className="block text-[10px] tracking-[0.2em] font-bold opacity-60 uppercase">Interactive Experience</span>
-                <span className="block text-xl font-display tracking-widest uppercase">Launch 3D AR Menu</span>
-              </div>
-            </button>
-            <p className="max-w-xs text-xs md:text-sm text-neutral-400 uppercase tracking-[0.2em] font-light leading-relaxed text-left">
+            <p className="max-w-xs text-xs md:text-sm text-neutral-400 uppercase tracking-[0.2em] font-light leading-relaxed text-center">
               High-definition culinary physics. An atmospheric exploration of taste.
             </p>
           </motion.div>

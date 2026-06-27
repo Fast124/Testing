@@ -100,16 +100,7 @@ export function Menu({ isNight }: MenuProps) {
                 </div>
               </div>
 
-              {dish.id === '1' && (
-                <button
-                  onClick={() => setShowSketchfabModal(true)}
-                  className="flex items-center justify-center gap-3 px-8 py-3.5 mb-8 w-full max-w-[280px] bg-gradient-to-r from-[#ff4500] to-[#ff6a00] text-white rounded-2xl text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-[#ff4500]/20 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#ff4500]/30 transition-all duration-300 cursor-pointer"
-                  id="view-live-pizza-btn"
-                >
-                  <Box size={14} className="animate-pulse" />
-                  View Live
-                </button>
-              )}
+
 
               <div>
                 <div className="flex justify-between items-start mb-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
