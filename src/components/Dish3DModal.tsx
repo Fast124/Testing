@@ -64,6 +64,20 @@ export function Dish3DModal({ dish, onClose }: Dish3DModalProps) {
             {dish.category}
           </span>
           <h3 className="text-3xl font-bold mb-4">{dish.name}</h3>
+          <p className="text-sm text-neutral-400 leading-relaxed mb-8">
+            Experience our {dish.name.toLowerCase()} in a fully immersive 360° environment. Rotate, zoom, and even place it on your real table using AR technology.
+          </p>
+          
+          <div className="space-y-4">
+             <div className="flex items-center gap-3 text-xs text-neutral-300">
+              <Rotate3d size={16} className="text-white" />
+              <span>360° Interaction</span>
+            </div>
+            <div className="flex items-center gap-3 text-xs text-neutral-300">
+              <Smartphone size={16} className="text-white" />
+              <span>Mobile AR Ready</span>
+            </div>
+          </div>
         </div>
       </motion.div>
     </motion.div>
