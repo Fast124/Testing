@@ -27,7 +27,7 @@ export function Navbar({ isNight, onToggleNight }: NavbarProps) {
             onClick={() => scrollToSection('hero')}
             className="text-2xl font-display tracking-widest hover:opacity-70 transition-opacity text-neutral-900 dark:text-white"
           >
-            TESTING
+            DEMO
           </button>
           
           <div className="hidden md:flex items-center gap-10">

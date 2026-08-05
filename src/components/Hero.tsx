@@ -26,7 +26,7 @@ export function Hero({ isNight }: HeroProps) {
           className="flex flex-col items-center"
         >
           <h1 className="font-display text-[80px] md:text-[180px] leading-[0.8] mb-12 select-none pointer-events-none uppercase tracking-tighter">
-            TES<br />TING
+            DE<br />MO
           </h1>
           <motion.div 
             className="flex flex-col md:flex-row items-center justify-center gap-10"

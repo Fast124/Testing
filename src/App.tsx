@@ -34,7 +34,7 @@ export default function App() {
       </main>
 
       <footer className="py-12 border-t border-neutral-200 dark:border-neutral-800 text-center">
-        <p className="text-sm text-neutral-500">© 2024 THE TEST KITCHEN. ALL RIGHTS RESERVED.</p>
+        <p className="text-sm text-neutral-500">© 2024 DEMO. ALL RIGHTS RESERVED.</p>
         <p className="text-xs mt-2 opacity-50 tracking-widest font-mono">ESTD 2024</p>
       </footer>
     </div>
